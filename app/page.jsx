@@ -1,10 +1,12 @@
 // /app/page.jsx - Server-side com ISR
 import { collection, getDocs, orderBy, query } from 'firebase/firestore';
+
 import { FIREBASE_COLLECTIONS } from '@/lib/collections';
-import Link from 'next/link';
-import styles from './page.module.css';
-import { PostCard } from './components/ui/PostCard/PostCard';
+import { createExcerpt } from '@/lib/excerpt';
 import { serverDb } from '@/lib/firebase-server';
+import Link from 'next/link';
+import { PostCard } from './components/ui/PostCard/PostCard';
+import styles from './page.module.css';
 
 // Revalidação a cada 1 hora (3600 segundos)
 export const revalidate = 3600;
@@ -34,7 +36,7 @@ export default async function HomePage() {
       <section className={styles.hero}>
         <div className={styles.profileWrapper}>
           <img
-            src="/user_4.png"
+            src='/user_4.png'
             alt='Eliezer Assunção de Paulo'
             width={150}
             height={150}
@@ -42,7 +44,7 @@ export default async function HomePage() {
           />
         </div>
         <h1 className={styles.title}>Eliezer Assunção de Paulo</h1>
-        <h2 className={styles.role}>Programador Web</h2>
+        <h2 className={styles.role}>Fullstack Enginner + AI</h2>
         <p className={styles.subtitle}>
           Compartilhando ideias, códigos e experiências no mundo do
           desenvolvimento.
@@ -64,7 +66,7 @@ export default async function HomePage() {
               <PostCard
                 key={post.id}
                 title={post.title}
-                content={post.content || ''}
+                content={createExcerpt(post.content || '')}
                 date={
                   post.createdAt?.toDate
                     ? post.createdAt.toDate()
