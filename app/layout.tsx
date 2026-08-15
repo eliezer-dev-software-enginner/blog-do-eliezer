@@ -1,10 +1,9 @@
 import './globals.css';
 
 import { Montserrat } from 'next/font/google';
-
-import { AuthProvider } from './context/AuthContext';
 import Footer from './components/Footer';
 import Header from './components/Header';
+import { AuthProvider } from './context/AuthContext';
 import styles from './layout.module.css';
 
 // As duas variaveis mantem os nomes antigos (--font-inter, --font-outfit)
@@ -26,7 +25,7 @@ const outfit = Montserrat({
 
 export const metadata = {
   metadataBase: new URL('https://blog-do-eliezer.vercel.app'),
-  title: 'Blog do Eliezer - Programação Web e Desenvolvimento',
+  title: 'Blog do Eliezer Dev - Programação Web e Desenvolvimento',
   description:
     'Um blog minimalista e moderno sobre programação web, desenvolvimento de software e tecnologias. Compartilhando ideias, códigos e experiências.',
   keywords: [
@@ -41,7 +40,7 @@ export const metadata = {
     'blog',
   ],
   openGraph: {
-    title: 'Blog do Eliezer - Programação Web e Desenvolvimento',
+    title: 'Blog do Eliezer Dev - Programação Web e Desenvolvimento',
     description:
       'Um blog minimalista e moderno sobre programação web, desenvolvimento de software e tecnologias.',
     type: 'website',
@@ -51,13 +50,13 @@ export const metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Blog do Eliezer',
+        alt: 'Blog do Eliezer Dev',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Blog do Eliezer - Programação Web e Desenvolvimento',
+    title: 'Blog do Eliezer Dev - Programação Web e Desenvolvimento',
     description:
       'Um blog minimalista e moderno sobre programação web, desenvolvimento de software e tecnologias.',
     images: ['/og-image.jpg'],
