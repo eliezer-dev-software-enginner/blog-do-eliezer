@@ -1,8 +1,16 @@
 import { collection, getDocs, query, where, orderBy } from 'firebase/firestore';
 import { serverDb } from '@/lib/firebase-server';
+import { possuiSegredoAdminValido } from '@/lib/adminAuth';
 import { NextResponse } from 'next/server';
 
-export async function GET() {
+export async function GET(request) {
+  if (!possuiSegredoAdminValido(request)) {
+    return NextResponse.json(
+      { success: false, error: 'Nao autorizado' },
+      { status: 401 },
+    );
+  }
+
   try {
     // Verificar diferentes coleções possíveis
     const collections = [

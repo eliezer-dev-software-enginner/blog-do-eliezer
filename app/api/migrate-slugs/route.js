@@ -3,8 +3,16 @@ import { collection, getDocs, updateDoc, doc } from 'firebase/firestore';
 import { serverDb } from '@/lib/firebase-server';
 import { generateSlug, generateUniqueSlug } from '@/lib/slug';
 import { FIREBASE_COLLECTIONS } from '@/lib/collections';
+import { possuiSegredoAdminValido } from '@/lib/adminAuth';
 
 export async function POST(request) {
+  if (!possuiSegredoAdminValido(request)) {
+    return Response.json(
+      { success: false, error: 'Nao autorizado' },
+      { status: 401 },
+    );
+  }
+
   try {
     console.log('Iniciando migração de posts via API...');
     

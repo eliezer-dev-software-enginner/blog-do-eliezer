@@ -1,20 +1,27 @@
 import './globals.css';
 
-import { Inter, Outfit } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 
 import { AuthProvider } from './context/AuthContext';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import styles from './layout.module.css';
 
-const inter = Inter({
+// As duas variaveis mantem os nomes antigos (--font-inter, --font-outfit)
+// porque dezenas de arquivos .module.css ja referenciam esses nomes para
+// texto de corpo vs. titulos - so trocamos qual fonte carrega em cada uma,
+// as duas agora sao Montserrat (pesos diferentes pra manter os mesmos
+// font-weight ja usados no resto do app).
+const inter = Montserrat({
   variable: '--font-inter',
   subsets: ['latin'],
+  weight: ['400', '500', '600'],
 });
 
-const outfit = Outfit({
+const outfit = Montserrat({
   variable: '--font-outfit',
   subsets: ['latin'],
+  weight: ['700', '800'],
 });
 
 export const metadata = {
