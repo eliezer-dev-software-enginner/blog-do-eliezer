@@ -54,7 +54,7 @@ export default function CreatePostPage() {
     try {
       // Check if slug already exists
       const postsQuery = query(
-        collection(db, 'posts'),
+        collection(db, FIREBASE_COLLECTIONS.POSTS),
         where('slug', '==', slug),
       );
       const querySnapshot = await getDocs(postsQuery);
